@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>プレゼントボックス抽選</title>
+    <style>
+      .present {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        background-image: url('https://example.com/present.png');
+        background-size: contain;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>プレゼントボックス抽選</h1>
+    <p>プレゼントボックスを選んでください。当たりがあれば「おめでとう！」、ハズレなら「残念！」と表示されます。</p>
+    <div id="present-container">
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+      <div class="present" onclick="checkWin(this)"></div>
+    </div>
+    <p id="result"></p>
+    <script>
+      function checkWin(present) {
+        var randomNum = Math.floor(Math.random() * 9); // 0から8のランダムな数字を生成
+        if (randomNum === 0 && present === document.querySelectorAll('.present')[0]) {
+          document.getElementById('result').innerHTML = 'おめでとう！';
+        } else {
+          document.getElementById('result').innerHTML = '残念！';
+        }
+      }
+    </script>
+  </body>
+</html>
