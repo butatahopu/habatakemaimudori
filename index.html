@@ -29,12 +29,12 @@
       <div class="present" onclick="checkWin(this)"></div>
       <div class="present" onclick="checkWin(this)"></div>
     </div>
-    <p id="result"></p>
     <script>
       function checkWin(present) {
         var randomNum = Math.floor(Math.random() * 9); // 0から8のランダムな数字を生成
         if (randomNum === 0 && present === document.querySelectorAll('.present')[0]) {
-          document.getElementById('result').innerHTML = 'おめでとう！';
+          var popup = window.open("", "popup", "width=200,height=100");
+          popup.document.write("<h1>おめでとう！</h1>");
         } else {
           document.getElementById('result').innerHTML = '残念！';
         }
