@@ -4,6 +4,27 @@
     <meta charset="UTF-8">
     <title>プレゼントボックス抽選</title>
     <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+      }
+
+      h1 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+
+      p {
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+
+      #present-container {
+        text-align: center;
+        margin-top: 50px;
+      }
+
       .present {
         width: 100px;
         height: 100px;
@@ -12,6 +33,21 @@
         background-image: url('https://example.com/present.png');
         background-size: contain;
         cursor: pointer;
+      }
+
+      #result {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      /* ポップアップ用スタイル */
+      #popup-message {
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 50px;
       }
     </style>
   </head>
@@ -29,12 +65,13 @@
       <div class="present" onclick="checkWin(this)"></div>
       <div class="present" onclick="checkWin(this)"></div>
     </div>
+    <div id="result"></div>
     <script>
       function checkWin(present) {
         var randomNum = Math.floor(Math.random() * 9); // 0から8のランダムな数字を生成
         if (randomNum === 0 && present === document.querySelectorAll('.present')[0]) {
           var popup = window.open("", "popup", "width=200,height=100");
-          popup.document.write("<h1>おめでとう！</h1>");
+          popup.document.write("<div id='popup-message'>おめでとう！</div>");
         } else {
           document.getElementById('result').innerHTML = '残念！';
         }
